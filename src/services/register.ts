@@ -3,6 +3,7 @@ import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-reposi
 import type { UsersRepository } from "@/repositories/users-repository.js"
 import { hash } from "bcryptjs"
 import { UserAlreadyExists } from "./errors/user-already-exists.js"
+import type { User } from "generated/prisma/index.js"
 
 interface RegisterServiceProps {
     name: string
@@ -10,11 +11,14 @@ interface RegisterServiceProps {
     password: string
 }
 
+interface RegisterServiceResponse {
+    user : User
+}
 
 export class RegisterService {
     constructor(private usersRepository: UsersRepository) {}
 
-    async execute({ name, email, password }: RegisterServiceProps) {
+    async execute({ name, email, password }: RegisterServiceProps) : Promise<RegisterServiceResponse> {
 
         const password_hash = await hash(password, 6)
 
@@ -25,11 +29,13 @@ export class RegisterService {
         }
 
 
-        await this.usersRepository.create({
+       const user =  await this.usersRepository.create({
             name,
             email,
             password_hash
         })
+
+        return {user};
 
     }
 }
