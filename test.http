@@ -4,7 +4,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name" : "Maria Beatriz",
-    "email" : "mbiazan@gmail.com",
-    "password" : "mabi8763"
+    "name" : "Silvana",
+    "email" : "silvana@gmail.com",
+    "password" : "silvana1965@"
 }
