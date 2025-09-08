@@ -1,8 +1,10 @@
+
+//Create User
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name" : "Thiago",
-    "email" : "thiagospadaridev@gmail.com",
-    "password" : "titi9632@"
+    "name" : "Maria Beatriz",
+    "email" : "mbiazan@gmail.com",
+    "password" : "mabi8763"
 }
