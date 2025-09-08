@@ -8,3 +8,13 @@ Content-Type: application/json
     "email" : "marcelo@gmail.com",
     "password" : "ma"
 }
+
+###
+
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+    "email" : "jonhdoe@example.com",
+    "password" : "123456"
+}
