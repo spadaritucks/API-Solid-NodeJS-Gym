@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma.js"
-import { PrismaUsersRepository } from "@/repositories/prisma-users-repository.js"
+import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository.js"
 import { RegisterService } from "@/services/register.js"
 import { hash } from "bcryptjs"
 import type { FastifyReply, FastifyRequest } from "fastify"
