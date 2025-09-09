@@ -1,12 +1,13 @@
-import type { UsersRepository } from "@/repositories/users-repository.js";
-import { InvalidCredentialsError } from "./errors/invalid-credentials-error.js";
-import { compare } from "bcryptjs";
-import type { CheckIn, User } from "generated/prisma/index.js";
+import type { CheckIn } from "generated/prisma/index.js";
 import type { CheckInsRepository } from "@/repositories/check-ins-repository.js";
+import type { GymsRepository } from "@/repositories/gyms-repository.js";
+import { ResourceNotFoundError } from "./errors/resource-not-exists.js";
 
 interface CheckInServiceRequest {
     userId: string
     gymId: string
+    userLatitude: number
+    userLongitude: number
 }
 
 type CheckInServiceResponse = {
@@ -15,10 +16,19 @@ type CheckInServiceResponse = {
 
 export class CheckInService {
     constructor(
-        private checkInsRepository: CheckInsRepository
+        private checkInsRepository: CheckInsRepository,
+        private gymsRepository : GymsRepository
     ) { }
 
     async execute({ userId,gymId }: CheckInServiceRequest): Promise<CheckInServiceResponse> {
+
+        const gym = await this.gymsRepository.findById(gymId)
+
+        if(!gym){
+            throw new ResourceNotFoundError()
+        }
+
+
 
         const checkInOnSameDay = await this.checkInsRepository.findByUserIdOnDate(userId, new Date())
 
