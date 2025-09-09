@@ -25,8 +25,8 @@ describe('CheckIn Service', () => {
             title: 'JavaScript Gym',
             description: '',
             phone: '',
-            latitude: new Decimal(0),
-            longitude: new Decimal(0),
+            latitude: new Decimal(-23.6928661),
+            longitude: new Decimal(-46.5460151),
         })
 
     })
@@ -49,10 +49,35 @@ describe('CheckIn Service', () => {
 
     })
 
+    it('should not be able to check in on distant gym', async () => {
+
+
+        gymsRepository.items.push({
+            id: 'gym-02',
+            title: 'JavaScript Gym',
+            description: '',
+            phone: '',
+            latitude: new Decimal(-23.6096848),
+            longitude: new Decimal(-46.3848251)
+        })
+
+
+        await expect(() =>
+            sut.execute({
+                userId: "user-01",
+                gymId: "gym-02",
+                userLatitude: -23.6928661,
+                userLongitude: -46.5460151
+            })
+        ).rejects.toBeInstanceOf(Error)
+
+    })
+
+
     it('should not be able to check in twice in the same day', async () => {
 
 
-        const { checkIn } = await sut.execute({
+        await sut.execute({
             userId: "user-01",
             gymId: "gym-01",
             userLatitude: -23.6928661,
