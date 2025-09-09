@@ -14,7 +14,7 @@ describe('Register Service', () => {
         sut = new RegisterService(usersRepository)
     })
 
-    it('should hash user password upon registration', async () => {
+    it('should create user', async () => {
         const { user } = await sut.execute({
             name: 'Jonh Doe',
             email: 'jonhdoe@example.com',

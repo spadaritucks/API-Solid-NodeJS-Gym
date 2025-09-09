@@ -9,7 +9,7 @@ export class InMemoryGymsRepository implements GymsRepository {
     async findById(id: string): Promise<Gym | null> {
         const gym = this.items.find((item) => item.id === id)
 
-        if(!gym){
+        if (!gym) {
             return null
         }
 
@@ -17,13 +17,13 @@ export class InMemoryGymsRepository implements GymsRepository {
     }
     async create(data: Prisma.GymCreateInput): Promise<Gym> {
         const gym = {
-             id: randomUUID(),
-             title : data.title,
-             description : data.description ?? null,
-             phone : data.phone ?? null,
-             latitude : new Prisma.Decimal(data.latitude.toString()),
-             longitude : new Prisma.Decimal(data.longitude.toString()),
-             checkIns : data.checkIns
+            id: data.id ?? randomUUID(),
+            title: data.title,
+            description: data.description ?? null,
+            phone: data.phone ?? null,
+            latitude: new Prisma.Decimal(data.latitude.toString()),
+            longitude: new Prisma.Decimal(data.longitude.toString()),
+            checkIns: data.checkIns
 
         }
 
