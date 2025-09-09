@@ -2,8 +2,8 @@
 
 ## RFs (Requisitos funcionais)
 - [x] Deve ser possivel se cadastrar
-- [ ] Deve ser possivel se autenticar
-- [ ] Deve ser possivel obter o perfil de um usuario logado
+- [x] Deve ser possivel se autenticar
+- [x] Deve ser possivel obter o perfil de um usuario logado
 - [ ] Deve ser possivel obter o número de check-ins realizados pelo usuário logado
 - [ ] Deve ser possivel o usuario obter seu histório de check-ins
 - [ ] Deve ser possivel o usuario buscar academias pelo nome
@@ -14,7 +14,7 @@
 
 - [x] O usuário não deve poder se cadastrar com um e-mail duplicado;
 - [x] O usuário não pode fazer 2 check-ins no mesmo dia
-- [ ] O usuario não pode fazer check-in se não estiver perto (100m) da academia
+- [x] O usuario não pode fazer check-in se não estiver perto (100m) da academia
 - [ ] O check-in só pode ser validado até 20 minutos após criado;
 - [ ] O check-in só pode ser validado por administradores
 - [ ] A academia só pode ser cadastrada por administradores;
