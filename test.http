@@ -6,7 +6,7 @@ Content-Type: application/json
 {
     "name" : "Marcelo",
     "email" : "marcelo@gmail.com",
-    "password" : "ma"
+    "password" : "marcelo"
 }
 
 ###
@@ -15,6 +15,12 @@ POST http://localhost:3000/sessions
 Content-Type: application/json
 
 {
-    "email" : "jonhdoe@example.com",
-    "password" : "123456"
+    "email" : "marcelo@gmail.com",
+    "password" : "marcelo"
 }
+
+
+###
+
+GET http://localhost:3000/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ZGMzODkwMS1kODI1LTQ2OTEtYTc3My0zOGY2ZGE1NWJkOWMiLCJpYXQiOjE3NTc2MTU2MTF9.baX7KqvoFvpqpM0GlvCiI4otWxsIbghYPTktTimFsN8
