@@ -6,16 +6,16 @@ import z from "zod"
 export async function search(request: FastifyRequest, reply: FastifyReply) {
 
     const searchGymBodySchema = z.object({
-        query : z.string(),
-        page: z.coerce.number()
+        q : z.string(),
+        page: z.coerce.number().min(1).default(1)
     })
 
-    const { page,query } = searchGymBodySchema.parse(request.query)
+    const { page, q } = searchGymBodySchema.parse(request.query)
 
     const searchService = makeSearchGymsService()
 
        const {gyms} = await searchService.execute({
-           query, page
+           query: q, page
         })
 
     return reply.status(200).send({
