@@ -8,7 +8,8 @@
     "start:dev": "tsx watch src/server.ts",
     "build": "tsup src --out-dir build",
     "test": "vitest run --project unit",
-    "test:e2e" : "vitest run --project e2e",
+    "test:watch": "vitest --dir src/services",
+    "test:e2e": "vitest run --dir src/http",
     "test:coverage": "vitest run --coverage"
   },
   "keywords": [],
@@ -24,6 +25,7 @@
     "globals": "16.3.0",
     "jiti": "2.5.1",
     "prisma": "6.15.0",
+    "supertest": "7.1.4",
     "tsup": "^8.5.0",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2",
@@ -32,6 +34,7 @@
   "dependencies": {
     "@fastify/jwt": "10.0.0",
     "@prisma/client": "6.15.0",
+    "@types/supertest": "6.0.3",
     "bcryptjs": "3.0.2",
     "dayjs": "1.11.18",
     "dotenv": "17.2.1",

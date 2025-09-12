@@ -1,11 +1,15 @@
-import { prisma } from "@/lib/prisma.js";
+
 import "dotenv/config"
+import { PrismaClient } from "generated/prisma/index.js";
 import { execSync } from "node:child_process";
 import { randomUUID } from "node:crypto"
-import type { Environment } from "vitest/dist/environments.js"
+import type { Environment } from "vitest/dist/environments.js";
 
-function generateDatabaseUrl (schema : string) {
-    if(!process.env.DATABASE_URL) {
+const prisma = new PrismaClient()
+
+
+function generateDatabaseUrl(schema: string) {
+    if (!process.env.DATABASE_URL) {
         throw new Error("Please provide a DATABASE_URL env variable")
     }
     const url = new URL(process.env.DATABASE_URL);
@@ -14,6 +18,7 @@ function generateDatabaseUrl (schema : string) {
 
     return url.toString()
 }
+
 
 export default <Environment>{
     name: 'prisma',
@@ -25,13 +30,15 @@ export default <Environment>{
 
         process.env.DATABASE_URL = databaseUrl
 
-        console.log(databaseUrl)
 
-        execSync('npx prisma migrate deploy')
+        execSync('npx prisma db push')
 
         return {
             async teardown() {
-                await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`)
+                await prisma.$executeRawUnsafe(
+                    `DROP SCHEMA IF EXISTS "${schema}" CASCADE`,
+                )
+
                 await prisma.$disconnect()
             }
         }
