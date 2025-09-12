@@ -1,9 +1,5 @@
-import { prisma } from "@/lib/prisma.js"
-import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository.js"
 import { UserAlreadyExists } from "@/services/errors/user-already-exists.js"
 import { makeRegisterService } from "@/services/factories/make-register-service.js"
-import { RegisterService } from "@/services/register.js"
-import { hash } from "bcryptjs"
 import type { FastifyReply, FastifyRequest } from "fastify"
 import z from "zod"
 
