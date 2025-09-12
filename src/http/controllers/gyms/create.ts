@@ -1,4 +1,3 @@
-import { UserAlreadyExists } from "@/services/errors/user-already-exists.js"
 import { makeCreateGymService } from "@/services/factories/make-create-gym-service.js"
 
 import type { FastifyReply, FastifyRequest } from "fastify"
