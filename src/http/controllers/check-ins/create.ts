@@ -11,15 +11,15 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     })
 
     const createCheckInBodySchema = z.object({
-        userLatitude: z.coerce.number().refine(value => {
+        latitude: z.coerce.number().refine(value => {
             return Math.abs(value) <= 90
         }),
-        userLongitude: z.coerce.number().refine(value => {
+        longitude: z.coerce.number().refine(value => {
             return Math.abs(value) <= 180
         }),
     })
 
-    const {userLatitude, userLongitude } = createCheckInBodySchema.parse(request.body)
+    const {latitude, longitude } = createCheckInBodySchema.parse(request.body)
        const {gymId} = createCheckInParamsSchema.parse(request.params)
 
     try {
@@ -28,8 +28,8 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
         await checkInsService.execute({
             userId : request.user.sub,
             gymId,
-            userLatitude,
-            userLongitude
+            userLatitude : latitude,
+            userLongitude : longitude
         })
     } catch (err) {
         if (err instanceof MaxDistanceError || err instanceof MaxNumberOfCheckInsError) {
