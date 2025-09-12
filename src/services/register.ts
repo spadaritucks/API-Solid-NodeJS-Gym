@@ -1,7 +1,8 @@
 import type { UsersRepository } from "@/repositories/users-repository.js"
 import { hash } from "bcryptjs"
 import { UserAlreadyExists } from "./errors/user-already-exists.js"
-import type { User } from "generated/prisma/index.js"
+import type { User } from '@prisma/client'
+
 
 interface RegisterServiceProps {
     name: string

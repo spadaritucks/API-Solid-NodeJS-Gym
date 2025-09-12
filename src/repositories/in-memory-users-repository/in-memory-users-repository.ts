@@ -1,4 +1,4 @@
-import type { User, Prisma } from "generated/prisma/index.js";
+import type { User, Prisma } from "@prisma/client";
 import type { UsersRepository } from "../users-repository.js";
 
 

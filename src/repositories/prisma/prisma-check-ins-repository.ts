@@ -1,4 +1,4 @@
-import type { Prisma, CheckIn } from "generated/prisma/index.js";
+import type { Prisma, CheckIn } from "@prisma/client";
 import type { CheckInsRepository } from "../check-ins-repository.js";
 import { prisma } from "@/lib/prisma.js";
 import dayjs from "dayjs";

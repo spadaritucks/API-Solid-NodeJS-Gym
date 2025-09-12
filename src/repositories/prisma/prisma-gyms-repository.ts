@@ -1,4 +1,4 @@
-import type { Gym, Prisma } from "generated/prisma/index.js";
+import type { Gym, Prisma } from "@prisma/client";
 import type { GymsRepository } from "../gyms-repository.js";
 import { prisma } from "@/lib/prisma.js";
 

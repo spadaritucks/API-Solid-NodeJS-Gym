@@ -1,4 +1,4 @@
-import type { Gym, Prisma } from "generated/prisma/index.js";
+import type { Gym, Prisma } from "@prisma/client";
 
 export interface GymsRepository {
     findById(id: string): Promise<Gym | null>

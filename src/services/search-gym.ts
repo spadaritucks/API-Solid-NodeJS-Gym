@@ -1,5 +1,5 @@
 import type { GymsRepository } from "@/repositories/gyms-repository.js"
-import type { Gym } from "generated/prisma/index.js"
+import type { Gym } from '@prisma/client'
 
 interface SearchGymsUseCaseRequest {
   query: string

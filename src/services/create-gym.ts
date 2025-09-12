@@ -1,7 +1,4 @@
-import type { UsersRepository } from "@/repositories/users-repository.js"
-import { hash } from "bcryptjs"
-import { UserAlreadyExists } from "./errors/user-already-exists.js"
-import type { Gym, User } from "generated/prisma/index.js"
+import type { Gym } from '@prisma/client'
 import type { GymsRepository } from "@/repositories/gyms-repository.js"
 
 interface CreateGymServiceProps {

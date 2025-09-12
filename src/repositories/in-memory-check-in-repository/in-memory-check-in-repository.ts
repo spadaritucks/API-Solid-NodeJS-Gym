@@ -1,6 +1,5 @@
-import { prisma } from "@/lib/prisma.js";
 import { randomUUID } from "crypto";
-import type { CheckIn, Prisma, User } from "generated/prisma/index.js";
+import type { CheckIn, Prisma, User } from "@prisma/client";
 import type { CheckInsRepository } from "../check-ins-repository.js";
 import dayjs from "dayjs";
 

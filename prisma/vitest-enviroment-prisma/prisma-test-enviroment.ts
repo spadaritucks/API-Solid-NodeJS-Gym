@@ -1,16 +1,14 @@
 
+import { PrismaClient } from "@prisma/client";
 import "dotenv/config"
-import { PrismaClient } from "generated/prisma/index.js";
-
 import { execSync } from "node:child_process";
 import { randomUUID } from "node:crypto"
-import type { Environment } from "vitest/dist/environments.js";
+import type { Environment } from "vitest/dist/environments.js"
 
 const prisma = new PrismaClient()
 
-
-function generateDatabaseUrl(schema: string) {
-    if (!process.env.DATABASE_URL) {
+function generateDatabaseUrl (schema : string) {
+    if(!process.env.DATABASE_URL) {
         throw new Error("Please provide a DATABASE_URL env variable")
     }
     const url = new URL(process.env.DATABASE_URL);
@@ -20,28 +18,23 @@ function generateDatabaseUrl(schema: string) {
     return url.toString()
 }
 
-
 export default <Environment>{
     name: 'prisma',
     transformMode: 'ssr',
     async setup() {
-        // Criar o banco de testes
         const schema = randomUUID()
         const databaseUrl = generateDatabaseUrl(schema)
 
         process.env.DATABASE_URL = databaseUrl
 
-
         execSync('npx prisma db push')
 
         return {
             async teardown() {
-                await prisma.$executeRawUnsafe(
-                    `DROP SCHEMA IF EXISTS "${schema}" CASCADE`,
-                )
-
+                await prisma.$executeRawUnsafe(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`)
                 await prisma.$disconnect()
             }
         }
     }
 }
+
