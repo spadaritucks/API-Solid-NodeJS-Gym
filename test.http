@@ -22,5 +22,14 @@ Content-Type: application/json
 
 ###
 
+PATCH http://localhost:3000/token/refresh
+
+
+
+
+
+
+###
+
 GET http://localhost:3000/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ZGMzODkwMS1kODI1LTQ2OTEtYTc3My0zOGY2ZGE1NWJkOWMiLCJpYXQiOjE3NTc3MDQ2ODV9.pYmGdavQFsx1fU2ZYaInb81oTpaWDH61G58Iemu582g
