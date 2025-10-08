@@ -26,8 +26,19 @@ PATCH http://localhost:3000/token/refresh
 
 
 
+###
 
+POST http://localhost:3000/gyms
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUVNQkVSIiwic3ViIjoiN2RjMzg5MDEtZDgyNS00NjkxLWE3NzMtMzhmNmRhNTViZDljIiwiaWF0IjoxNzU5OTE5MDE2LCJleHAiOjE3NTk5MTk2MTZ9.ikxOL9amcWrSy9Qz-CgZTdVSE_9kyToudhmOGeoyKHYeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUVNQkVSIiwic3ViIjoiN2RjMzg5MDEtZDgyNS00NjkxLWE3NzMtMzhmNmRhNTViZDljIiwiaWF0IjoxNzU5OTE5MDE2LCJleHAiOjE3NTk5MTk2MTZ9.ikxOL9amcWrSy9Qz-CgZTdVSE_9kyToudhmOGeoyKHY
 
+{
+    "title" : "Academia do Marcelo",
+    "description" : "A melhor academia da cidade",
+    "phone" : "11999999999",
+    "latitude" : -23.564224,
+    "longitude" : -46.653156
+}
 
 ###
 
