@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { CreateGymService } from './create-gym.js'
 import { InMemoryGymsRepository } from '@/repositories/in-memory-gyms-repository/in-memory-gyms-repository.js'
-import { Decimal } from 'generated/prisma/runtime/library.js'
+
 
 let gymRepository: InMemoryGymsRepository
 let sut: CreateGymService
