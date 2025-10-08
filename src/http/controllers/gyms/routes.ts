@@ -3,6 +3,7 @@ import type { FastifyInstance } from "fastify";
 import { search } from "./search.js";
 import { nearby } from "./nearby.js";
 import { createGym } from "./create.js";
+import { verifyUserRole } from "@/http/middlewares/only-admin.js";
 
 
 export async function gymsRoutes (app : FastifyInstance) {
@@ -10,5 +11,5 @@ export async function gymsRoutes (app : FastifyInstance) {
 
     app.get('/gyms/search', search)
     app.get('/gyms/nearby', nearby)
-    app.post('/gyms', createGym)
+    app.post('/gyms', {onRequest : verifyUserRole("ADMIN")} , createGym)
 }
